@@ -9,30 +9,27 @@ import { Length } from 'class-validator';
 import { Workout } from '../../workout/entities/workout.entity';
 
 @Entity()
-export class User {
+export class Exercise {
   @PrimaryGeneratedColumn()
   public id: number;
 
   @Column({ unique: true })
   @Length(2, 4)
-  public username: string;
-
-  @Column({ default: true })
-  public isActive: boolean;
+  public title: string;
 
   @OneToMany(
     () => Workout,
-    (workout) => workout.users, //optional
+    (workout) => workout.exercises, //optional
     { onDelete: 'NO ACTION', onUpdate: 'NO ACTION' },
   )
   @JoinTable({
-    name: 'user_workout',
+    name: 'exercise_workout',
     joinColumn: {
-      name: 'workout_id',
+      name: 'exercise_id',
       referencedColumnName: 'id',
     },
     inverseJoinColumn: {
-      name: 'user_id',
+      name: 'workout_id',
       referencedColumnName: 'id',
     },
   })
