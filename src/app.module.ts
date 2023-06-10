@@ -3,11 +3,13 @@ import { WorkoutModule } from './workout/workout.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
+import { ExerciseModule } from './exercise/exercise.module';
 
 @Module({
   imports: [
     WorkoutModule,
     UserModule,
+    ExerciseModule,
     ConfigModule.forRoot({ envFilePath: ['.env'] }),
     TypeOrmModule.forRoot({
       type: 'postgres',

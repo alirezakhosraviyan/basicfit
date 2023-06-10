@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreateWorkoutDto } from './dto/create-workout.dto';
-import { UpdateWorkoutDto } from './dto/update-workout.dto';
 
 @Injectable()
 export class WorkoutService {
@@ -15,14 +14,5 @@ export class WorkoutService {
 
   findOne(id: number) {
     return `This action returns a #${id} workout`;
-  }
-
-  update(id: number, updateWorkoutDto: UpdateWorkoutDto) {
-    console.log(updateWorkoutDto);
-    return `This action updates a #${id} workout`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} workout`;
   }
 }

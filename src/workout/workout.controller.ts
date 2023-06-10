@@ -10,7 +10,6 @@ import {
 import { WorkoutService } from './workout.service';
 import { CreateWorkoutDto } from './dto/create-workout.dto';
 import { UpdateWorkoutDto } from './dto/update-workout.dto';
-import { WorkoutInterface } from './interfaces/workout.interface'
 
 @Controller('workout')
 export class WorkoutController {
@@ -22,7 +21,7 @@ export class WorkoutController {
   }
 
   @Get()
-  async findAll(): Promise<WorkoutInterface[]> {
+  async findAll() {
     return this.workoutService.findAll();
   }
 
@@ -32,7 +31,10 @@ export class WorkoutController {
   }
 
   @Patch(':id')
-  async update(@Param('id') id: string, @Body() updateWorkoutDto: UpdateWorkoutDto) {
+  async update(
+    @Param('id') id: string,
+    @Body() updateWorkoutDto: UpdateWorkoutDto,
+  ) {
     return this.workoutService.update(+id, updateWorkoutDto);
   }
 
